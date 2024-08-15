@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# first time
+# kubectl apply -f nginx.yml
+
+# kubectl apply -f service-nodeport.yml
+
+kubectl delete -f nginx.yml
+kubectl delete service nginx-example -n default
+
+kubectl apply -f nginx.yml
+kubectl apply -f service-nodeport.yml
+
+echo "Current Pods"
+kubectl get pods --all-namespaces -o wide
+
+echo "Current Services"
+kubectl get services --all-namespaces -o wide
+
+#kubectl create -f nginx.yml
+#kubectl create -f service-nodeport.yml
