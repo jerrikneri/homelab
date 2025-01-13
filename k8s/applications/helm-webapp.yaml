@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: helm-argo-application
-  namespace: helm-webapp
+  namespace: argocd
 spec:
   project: default
 
