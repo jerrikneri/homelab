@@ -1,0 +1,50 @@
+nodeExporter:
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
+  hostNetwork: false  # Set to true only if absolutely necessary
+  hostPID: false       # Set to true only if absolutely necessary
+  volumes:
+    - name: proc
+      hostPath:
+        path: /proc
+        type: Directory
+    - name: sys
+      hostPath:
+        path: /sys
+        type: Directory
+  volumeMounts:
+    - mountPath: /host/proc
+      name: proc
+      readOnly: true
+    - mountPath: /host/sys
+      name: sys
+      readOnly: true
+alertmanager:
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
+pushgateway:
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
+server:
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
